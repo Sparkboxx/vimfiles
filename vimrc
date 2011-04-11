@@ -10,9 +10,11 @@ Bundle "git://git.wincent.com/command-t.git"
 Bundle "https://github.com/altercation/vim-colors-solarized.git"
 Bundle "https://github.com/tpope/vim-git.git"
 Bundle "https://github.com/tpope/vim-fugitive.git"
+Bundle "https://github.com/tpope/vim-surround.git"
 Bundle "https://github.com/scrooloose/nerdcommenter.git"
 Bundle "https://github.com/scrooloose/nerdtree.git"
 Bundle "https://github.com/vim-scripts/VimClojure.git"
+Bundle "tlist.vim"
 
 " UTF-8 All the way
 scriptencoding utf-8
@@ -164,20 +166,24 @@ let g:rails_statusline=0
 " Clojure config
 
 " Enable gorilla for the lisp on the jvm
-let clj_want_gorilla = 0
+let vimclojure#WantNailgun=1
 
 " Highlight built-in clojure functions
 let g:clj_highlight_builtins = 1
-
-" Also highlight contrib
-let g:clj_highlight_contrib = 1
 
 " Paren Rainbow (diff colors for diff nestings)
 let g:clj_paren_rainbow = 1
 
 " Auto added used namespaces, generally be awesome
-let g:clj_dynamic_highlighting = 1
+let vimclojure#DynamicHighlighting=1
+let vimclojure#HighlightBuiltins=1
+let vimclojure#ParenRainbow=1
 
+" Make taglist use lisp language def for clojure code
+let tlist_clojure_settings = 'lisp;f:function'
+
+" Close taglist window if last file is closed
+let Tlist_Exit_OnlyWindow=1
 
 " NERDCommenter
 let NERDDefaultNesting = 0
@@ -260,6 +266,7 @@ match Todo /\s\+$/
 """ Personal keybindings
 " Reload vim settings
 nmap <silent> <Leader>§ :source ~/.vimrc<CR>
+nmap <silent> <Leader>± :e ~/.vimrc<CR>
 
 " Map F1 to escape
 map <F1> <Esc>
