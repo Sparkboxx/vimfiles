@@ -6,23 +6,28 @@ by me on a daily basis in my favorite Vim version: MacVim.
 ## To get started
 
 1. From your terminal:
-
-    cd ~
-    git clone git://github.com/bulters/vimfiles.git
-    ln -s vimfiles ~/.vim
-    ln -s vimfiles/vimrc ~/.vimrc
+<pre>
+cd ~
+git clone git://github.com/bulters/vimfiles.git
+ln -s vimfiles ~/.vim
+ln -s vimfiles/vimrc ~/.vimrc
+</pre>
 
 2. From vim
 
-    :e ~/.vimrc
-    :BundleInstall
+<pre>
+:e ~/.vimrc
+:BundleInstall
+</pre>
 
 3. You're al... no not quite yet.
 
 *Command-T* will require compilation to do some textmate like quick go-to-file magic.
-So to compile the m***:
+So to compile the .....:
 
-    cd ~/vimfiles/bundle/command-t && rake make && cd
+<pre>
+cd ~/vimfiles/bundle/command-t && rake make && cd
+</pre>
 
 4. You're all set!
 
