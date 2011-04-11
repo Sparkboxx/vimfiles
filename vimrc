@@ -3,12 +3,16 @@ call vundle#rc()
 
 " Bundles:
 Bundle "L9"
-Bundle "FuzzyFinder"
+" Bundle "FuzzyFinder"
 Bundle "rails.vim"
 Bundle "ack.vim"
 Bundle "git://git.wincent.com/command-t.git"
 Bundle "https://github.com/altercation/vim-colors-solarized.git"
+Bundle "https://github.com/tpope/vim-git.git"
 Bundle "https://github.com/tpope/vim-fugitive.git"
+Bundle "https://github.com/scrooloose/nerdcommenter.git"
+Bundle "https://github.com/scrooloose/nerdtree.git"
+Bundle "https://github.com/vim-scripts/VimClojure.git"
 
 " UTF-8 All the way
 scriptencoding utf-8
@@ -253,9 +257,11 @@ set noswapfile
 " Matching for trailing whitespace
 match Todo /\s\+$/
 
-" Use solarized colorscheme
-
-" Personal keybindings
-
+""" Personal keybindings
 " Reload vim settings
 nmap <silent> <Leader>§ :source ~/.vimrc<CR>
+
+" Map F1 to escape
+map <F1> <Esc>
+imap <F1> <Esc>
+
