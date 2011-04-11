@@ -17,7 +17,14 @@ by me on a daily basis in my favorite Vim version: MacVim.
     :e ~/.vimrc
     :BundleInstall
 
-3. You're all ready to go.
+3. You're al... no not quite yet.
+
+*Command-T* will require compilation to do some textmate like quick go-to-file magic.
+So to compile the m***:
+
+    cd ~/vimfiles/bundle/command-t && rake make && cd
+
+4. You're all set!
 
 ## What in there?
 
