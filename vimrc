@@ -19,9 +19,6 @@ Bundle "tlist.vim"
 " UTF-8 All the way
 scriptencoding utf-8
 
-" Use zsh.
-set shell=zsh
-
 " Enable filetype-specific indenting, syntax, and plugins
 filetype plugin indent on
 set nocompatible
@@ -269,9 +266,17 @@ nmap <silent> <Leader>§ :source ~/.vimrc<CR>
 nmap <silent> <Leader>± :e ~/.vimrc<CR>
 
 " Close current split
-nmap <silent> <Leader>c :q!<CR>
+nmap <silent> <Leader>cc :q<CR>
 
 " Map F1 to escape
 map <F1> <Esc>
 imap <F1> <Esc>
 
+" For fugitive
+nmap <silent> <Leader>gs :Gstatus<CR>
+nmap <silent> <Leader>gcc :Gcommit<CR>
+
+" For ruby method navigation
+map <Leader>[ [m
+map <Leader>] ]M
+map <C-n> ]m
