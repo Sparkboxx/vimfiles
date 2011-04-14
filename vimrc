@@ -161,17 +161,8 @@ let ruby_operators = 1
 let g:rails_statusline=0
 
 " Clojure config
-
-" Enable gorilla for the lisp on the jvm
-let vimclojure#WantNailgun=1
-
-" Highlight built-in clojure functions
-let g:clj_highlight_builtins = 1
-
-" Paren Rainbow (diff colors for diff nestings)
-let g:clj_paren_rainbow = 1
-
-" Auto added used namespaces, generally be awesome
+let vimclojure#WantNailgun   = 1
+let vimclojure#NailgunClient = "ng"
 let vimclojure#DynamicHighlighting=1
 let vimclojure#HighlightBuiltins=1
 let vimclojure#ParenRainbow=1
