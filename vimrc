@@ -257,7 +257,7 @@ nmap <silent> <Leader>§ :source ~/.vimrc<CR>
 nmap <silent> <Leader>± :e ~/.vimrc<CR>
 
 " Close current split
-nmap <silent> <Leader>cc :q<CR>
+nmap <silent> <Leader>qq :q<CR>
 
 " Map F1 to escape
 map <F1> <Esc>
