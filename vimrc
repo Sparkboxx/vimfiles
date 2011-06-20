@@ -1,13 +1,16 @@
-set rtp+=~/.vim/vundle.git/
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
 " Bundles:
+Bundle "gmarik/vundle"
 Bundle "L9"
 " Bundle "FuzzyFinder"
 Bundle "rails.vim"
 Bundle "ack.vim"
 Bundle "git://git.wincent.com/command-t.git"
-Bundle "https://github.com/altercation/vim-colors-solarized.git"
 Bundle "https://github.com/tpope/vim-git.git"
 Bundle "https://github.com/tpope/vim-fugitive.git"
 Bundle "https://github.com/tpope/vim-surround.git"
@@ -15,6 +18,7 @@ Bundle "https://github.com/scrooloose/nerdcommenter.git"
 Bundle "https://github.com/scrooloose/nerdtree.git"
 Bundle "https://github.com/vim-scripts/VimClojure.git"
 Bundle "tlist.vim"
+Bundle "molokai.vim"
 
 " UTF-8 All the way
 scriptencoding utf-8
@@ -35,7 +39,8 @@ set autoread
 " Explicitly set 256 color support
 " set t_Co=256
 
-colorscheme solarized
+" colorscheme solarized
+" colorscheme molokai
 
 " GUI FONT
 set guifont=Espresso\ Mono:h14
@@ -271,3 +276,6 @@ nmap <silent> <Leader>gcc :Gcommit<CR>
 map <Leader>[ [m
 map <Leader>] ]M
 map <C-n> ]m
+
+" For command-t
+map <Leader>ft :CommandTFlush<CR>
