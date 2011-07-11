@@ -16,9 +16,9 @@ Bundle "https://github.com/tpope/vim-fugitive.git"
 Bundle "https://github.com/tpope/vim-surround.git"
 Bundle "https://github.com/scrooloose/nerdcommenter.git"
 Bundle "https://github.com/scrooloose/nerdtree.git"
-Bundle "https://github.com/vim-scripts/VimClojure.git"
 Bundle "molokai"
 Bundle "vim-coffee-script"
+Bundle "slimv.vim"
 
 " UTF-8 All the way
 scriptencoding utf-8
@@ -43,7 +43,8 @@ set autoread
 colorscheme molokai
 
 " GUI FONT
-set guifont=Espresso\ Mono:h14
+" set guifont=Espresso\ Mono:h14
+set guifont=Envy\ Code\ R:h11
 
 " TEXT SETTINGS
 
@@ -199,9 +200,6 @@ let NERDTreeIgnore=['\.$', '\~$']
 
 " AUTOCOMMANDS
 
-function! CustomClojureSettings()
-  set filetype=clojure
-endfunction
 
 " function! CustomJsonSettings()
   " autocmd BufRead *.json set filetype=json
