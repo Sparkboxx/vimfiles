@@ -17,8 +17,8 @@ Bundle "https://github.com/tpope/vim-surround.git"
 Bundle "https://github.com/scrooloose/nerdcommenter.git"
 Bundle "https://github.com/scrooloose/nerdtree.git"
 Bundle "https://github.com/vim-scripts/VimClojure.git"
-Bundle "tlist.vim"
-Bundle "molokai.vim"
+Bundle "molokai"
+Bundle "vim-coffee-script"
 
 " UTF-8 All the way
 scriptencoding utf-8
@@ -40,7 +40,7 @@ set autoread
 " set t_Co=256
 
 " colorscheme solarized
-" colorscheme molokai
+colorscheme molokai
 
 " GUI FONT
 set guifont=Espresso\ Mono:h14
@@ -164,13 +164,6 @@ let ruby_operators = 1
 
 " Turn off rails bits of statusbar
 let g:rails_statusline=0
-
-" Clojure config
-let vimclojure#WantNailgun   = 1
-let vimclojure#NailgunClient = "ng"
-let vimclojure#DynamicHighlighting=1
-let vimclojure#HighlightBuiltins=1
-let vimclojure#ParenRainbow=1
 
 " Make taglist use lisp language def for clojure code
 let tlist_clojure_settings = 'lisp;f:function'
