@@ -7,18 +7,34 @@ call vundle#rc()
 " Bundles:
 Bundle "gmarik/vundle"
 Bundle "L9"
-" Bundle "FuzzyFinder"
-Bundle "rails.vim"
-Bundle "ack.vim"
+
+" Navigation stuff
 Bundle "git://git.wincent.com/command-t.git"
+Bundle "https://github.com/scrooloose/nerdtree.git"
+Bundle "Tagbar"
+Bundle "ack.vim"
+Bundle "minibufexpl.vim"
+
+" DVCS stuff
 Bundle "https://github.com/tpope/vim-git.git"
 Bundle "https://github.com/tpope/vim-fugitive.git"
+
+" Code editing stuff
 Bundle "https://github.com/tpope/vim-surround.git"
 Bundle "https://github.com/scrooloose/nerdcommenter.git"
-Bundle "https://github.com/scrooloose/nerdtree.git"
+
+" Clojure/Lisp stuff
+Bundle "Vimclojure"
+" Bundle "slimv.vim"
+
+" Ruby stuff"
+Bundle "rails.vim"
+
+" look-n-feel
 Bundle "molokai"
+
+" Other stuff
 Bundle "vim-coffee-script"
-Bundle "slimv.vim"
 
 " UTF-8 All the way
 scriptencoding utf-8
@@ -35,22 +51,24 @@ set vb t_vb=
 set autoread
 
 " COLOR SUPPORT
-
 " Explicitly set 256 color support
-" set t_Co=256
+set t_Co=256
 
-" colorscheme solarized
 colorscheme molokai
-
-" GUI FONT
-" set guifont=Espresso\ Mono:h14
-set guifont=Envy\ Code\ R:h11
+" Remove toolbar in MacVim
+if has("gui_running")
+  set noantialias
+  set guifont=Monaco:h10
+  set guioptions-=T        " no toolbar
+  set guioptions-=l        " no left scrollbar
+  set guioptions-=L        " no left scrollbar
+  set guioptions-=r        " no right scrollbar
+  set guioptions-=R        " no right scrollbar
+end
 
 " TEXT SETTINGS
-
 " Disable line wrapping
 set nowrap
-" set wrap
 
 " use indents of 2 spaces, and have them copied down lines:
 set expandtab
@@ -66,17 +84,14 @@ set numberwidth=3
 autocmd BufWritePre * :%s/\s\+$//e
 
 " KEY BINDINGS
-
 let mapleader = ","
 
 " WINDOW SPLITTING
-
 " Open new horizontal split windows below current
 set splitbelow
 
 " Open new vertical split windows to the right
 set splitright
-
 
 " Set temporary directory (don't litter local dir with swp/tmp files)
 set directory=/tmp/
@@ -166,9 +181,6 @@ let ruby_operators = 1
 " Turn off rails bits of statusbar
 let g:rails_statusline=0
 
-" Make taglist use lisp language def for clojure code
-let tlist_clojure_settings = 'lisp;f:function'
-
 " Close taglist window if last file is closed
 let Tlist_Exit_OnlyWindow=1
 
@@ -176,8 +188,6 @@ let Tlist_Exit_OnlyWindow=1
 let NERDDefaultNesting = 0
 let NERDRemoveExtraSpaces = 1
 let NERDSpaceDelims = 1
-
-" NERDTree
 
 " Enable nice colors
 let NERDChristmasTree = 1
@@ -194,13 +204,7 @@ let NERDTreeShowHidden = 1
 let NERDTreeHijackNetrw = 0
 let NERDTreeIgnore=['\.$', '\~$']
 
-" NeoComplCache
-" let g:NeoComplCache_EnableAtStartup=1
-
-
 " AUTOCOMMANDS
-
-
 " function! CustomJsonSettings()
   " autocmd BufRead *.json set filetype=json
   " au! Syntax json source ~/Downloads/json.vim
@@ -211,6 +215,9 @@ let NERDTreeIgnore=['\.$', '\~$']
 
 function! CustomMarkdownSettings()
   set filetype=mkd
+endfunction
+
+function! CustomClojureSettings()
 endfunction
 
 augroup SpicyAutoCommands
@@ -228,8 +235,6 @@ nmap <silent> <C-j> :wincmd j<CR>
 nmap <silent> <C-k> :wincmd k<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 
-" Remove toolbar in MacVim
-set guioptions-=T
 
 " Make other people absolutely hate me
 " Disable arrow keys
@@ -270,3 +275,32 @@ map <C-n> ]m
 
 " For command-t
 map <Leader>ft :CommandTFlush<CR>
+
+" For email
+augroup filetypedetect
+  " Mail
+  autocmd BufRead,BufNewFile *mutt-* setfiletype mail
+augroup END
+
+" For Rubytest
+
+let g:rubytest_in_quickfix = 1
+let g:rubytest_cmd_test = "ruby %p"
+let g:rubytest_cmd_testcase = "ruby %p -n '/%c/'"
+let g:rubytest_cmd_spec = "bundle exec spec -f specdoc %p"
+let g:rubytest_cmd_example = "bundle exec spec -f specdoc %p -e '%c'"
+let g:rubytest_cmd_feature = "bundle exec cucumber %p"
+let g:rubytest_cmd_story = "bundle exec cucumber %p -n '%c'"
+
+map <Leader>r <Plug>RubyTestRun " change from <Leader>t to <Leader>r
+map <Leader>R <Plug>RubyFileRun " change from <Leader>T to <Leader>R
+map <Leader>\ <Plug>RubyTestRunLast " change from <Leader>l to <Leader>\
+
+" Hide stuffs
+set hidden
+
+" For scratch buffer
+map <Leader>` :ScratchOpen<CR>
+
+" For easy buffer toggling
+map <Leader>, :b#<CR>
