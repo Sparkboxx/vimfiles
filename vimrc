@@ -218,6 +218,7 @@ function! CustomMarkdownSettings()
 endfunction
 
 function! CustomClojureSettings()
+  set filetype=Clojure
 endfunction
 
 augroup SpicyAutoCommands
