@@ -36,7 +36,7 @@ cd ~/vimfiles/bundle/command-t && rake make && cd
 In no particular order:
 
 * Vundle: To install plugins/filetypes/color themes with great ease.
-* Solarized: The amazin color theme; I prefer the light version.
+* Molokai: The most amazing colortheme for code editing.
 * Fugitive/Git: Git VC right from Vim.
 * VimClojure: Yeah, I should be using Emacs for this; but can't get my head/fingers around the keybindings.
 
