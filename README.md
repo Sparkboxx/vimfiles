@@ -14,7 +14,6 @@ ln -s vimfiles/vimrc ~/.vimrc
 </pre>
 
 2. From vim
-
 <pre>
 :e ~/.vimrc
 :BundleInstall
