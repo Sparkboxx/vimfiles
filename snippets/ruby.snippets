@@ -1,0 +1,24 @@
+# ============================================================================
+# LANGUAGE ELEMENTS
+#
+# Snippets for defining methods, classes, modules and so on.
+#
+snippet cr Insterts a code review comment
+	##
+	# CODE REVIEW: Wilco
+	# DATE: `system("date +%Y-%m-%d")`
+	# COMMIT: `system("git rev-parse HEAD")`
+	#
+	# ${1:Please write your comment.}
+	#
+
+snippet bb Insterst a Key Value block
+	{ |${1:var}, ${2:var}| ${3} }
+
+snippet doc Inserts a Documentation block
+	##
+	# ${1:Summary}
+	# @param [${2:input_param}] ${3:description}
+	# @return [${4:output}]
+	#
+

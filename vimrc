@@ -1,70 +1,32 @@
+set nocp
+call pathogen#infect()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" BASIC EDITING CONFIGURATION
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
-filetype off
-
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-
-" Bundles:
-Bundle "gmarik/vundle"
-Bundle "L9"
-
-" Navigation stuff
-Bundle "git://git.wincent.com/command-t.git"
-Bundle "https://github.com/scrooloose/nerdtree.git"
-Bundle "Tagbar"
-Bundle "ack.vim"
-Bundle "minibufexpl.vim"
-
-" DVCS stuff
-Bundle "https://github.com/tpope/vim-git.git"
-Bundle "https://github.com/tpope/vim-fugitive.git"
-
-" Code editing stuff
-Bundle "https://github.com/tpope/vim-surround.git"
-Bundle "https://github.com/scrooloose/nerdcommenter.git"
-
-" Clojure/Lisp stuff
-Bundle "Vimclojure"
-" Bundle "slimv.vim"
-
-" Ruby stuff"
-Bundle "rails.vim"
-
-" look-n-feel
-Bundle "molokai"
-
-" Other stuff
-Bundle "vim-coffee-script"
-
-" UTF-8 All the way
-scriptencoding utf-8
-
 " Enable filetype-specific indenting, syntax, and plugins
 filetype plugin indent on
-set nocompatible
-syntax on
-
-" Disable bell.
-set vb t_vb=
-
-" Set to auto read when a file is changed from the outside
-set autoread
 
 " COLOR SUPPORT
 " Explicitly set 256 color support
+syntax on
 set t_Co=256
+set background=light
+set textwidth=80
+set cc=+1
 
-colorscheme molokai
-" Remove toolbar in MacVim
-if has("gui_running")
-  set noantialias
-  set guifont=Monaco:h10
-  set guioptions-=T        " no toolbar
-  set guioptions-=l        " no left scrollbar
-  set guioptions-=L        " no left scrollbar
-  set guioptions-=r        " no right scrollbar
-  set guioptions-=R        " no right scrollbar
-end
+colorscheme jellybeans
+
+if has('gui_running')
+    set guioptions-=T        " no toolbar
+    set guioptions-=l        " no left scrollbar
+    set guioptions-=L        " no left scrollbar
+    set guioptions-=r        " no right scrollbar
+    set guioptions-=R        " no right scrollbar
+endif
+
+set guifont=Menlo:h14
 
 " TEXT SETTINGS
 " Disable line wrapping
@@ -80,228 +42,266 @@ set shiftwidth=2
 set number
 set numberwidth=3
 
-" kill trailing spaces when exiting file
-autocmd BufWritePre * :%s/\s\+$//e
+" highlight current line
+set cursorline
+set cmdheight=2
 
-" KEY BINDINGS
-let mapleader = ","
-
-" WINDOW SPLITTING
 " Open new horizontal split windows below current
 set splitbelow
-
 " Open new vertical split windows to the right
 set splitright
-
 " Set temporary directory (don't litter local dir with swp/tmp files)
 set directory=/tmp/
 
-" Use the tab complete menu
-set wildmenu
-
-" KEYBINDINGS
-
-" Quick, jump out of insert mode while no one is looking
-" imap ii <Esc>
-
-" Yank from the cursor to the end of the line, to be consistent with C and D.
-nnoremap Y y$
-
-
-" CUSTOM PLUGINS
-
-" FuzzyFinder Path Splitting (ala textmate)
-let g:fuf_splitPathMatching = 1
-
-" Write stats to file
-let g:fuf_infoFile = '~/.vim-fuf'
-let g:fuf_learningLimit = 500
-
-" CUSTOM FUNCTIONS
-
-" Add RebuildTagsFile function/command
-function! s:RebuildTagsFile()
-  !ctags -R --exclude=coverage --exclude=files --exclude=public --exclude=log --exclude=tmp --exclude=vendor *
-endfunction
-command! -nargs=0 RebuildTagsFile call s:RebuildTagsFile()
-
-
-" STATUS BAR CONFIG
-
-set laststatus=2
-set statusline=\ "
-set statusline+=%f\ " file name
-set statusline+=[
-set statusline+=%{strlen(&ft)?&ft:'none'} " filetype
-set statusline+=]
-set statusline+=%h%1*%m%r%w%0* " flag
-set statusline+=%= " right align
-set statusline+=%-14.(%l,%c%V%)\ %<%P " offset
-
-
-" NERDTree CONFIGURATION
-
-" Enable nice colors
-let NERDChristmasTree = 1
-
-" Make it easy to see where we are
-let NERDTreeHighlightCursorline = 1
-
-" Make bookmarks visible
-let NERDTreeShowBookmarks = 1
-
-" Show hidden files
-let NERDTreeShowHidden = 1
-
-" Don't hijack NETRW
-let NERDTreeHijackNetrw = 0
-let NERDTreeIgnore=['\.$', '\~$']
-
-" Make F2 open NERDTree
-nmap <F2> :NERDTreeToggle<CR>
-
-
-" Search Config
-
-" show the `best match so far' as search strings are typed:
-set incsearch
-
-" assume the /g flag on :s substitutions to replace all matches in a line:
-set gdefault
-
-" <leader>f to startup an ack search
-map <leader>a :Ack<Space>
-
-
-" RUBY
-
-" Highlight ruby operators
-let ruby_operators = 1
-
-" Turn off rails bits of statusbar
-let g:rails_statusline=0
-
-" Close taglist window if last file is closed
-let Tlist_Exit_OnlyWindow=1
-
-" NERDCommenter
-let NERDDefaultNesting = 0
-let NERDRemoveExtraSpaces = 1
-let NERDSpaceDelims = 1
-
-" Enable nice colors
-let NERDChristmasTree = 1
-
-" Make it easy to see where we are
-let NERDTreeHighlightCursorline = 1
-
-" Make bookmarks visible
-let NERDTreeShowBookmarks = 1
-
-" Show hidden files
-let NERDTreeShowHidden = 1
-" Don't hijack NETRW
-let NERDTreeHijackNetrw = 0
-let NERDTreeIgnore=['\.$', '\~$']
-
-" AUTOCOMMANDS
-" function! CustomJsonSettings()
-  " autocmd BufRead *.json set filetype=json
-  " au! Syntax json source ~/Downloads/json.vim
-  " autocmd FileType json set equalprg=json_reformat
-  " autocmd FileType json set makeprg=jsonval\ %
-  " autocmd FileType json set errorformat=%E%f:\ %m\ at\ line\ %l,%-G%.%#
-" endfunction
-
-function! CustomMarkdownSettings()
-  set filetype=mkd
-endfunction
-
-function! CustomClojureSettings()
-  set filetype=Clojure
-endfunction
-
-augroup SpicyAutoCommands
-  autocmd BufEnter,BufWritePost *.clj   call CustomClojureSettings()
-  autocmd BufEnter *.markdown call CustomMarkdownSettings()
-  " autocmd BufRead *.json call CustomJsonSettings()
-  " autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-  " autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-  " autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-augroup END
-
-" Mappings for quick split navigation
-nmap <silent> <C-h> :wincmd h<CR>
-nmap <silent> <C-j> :wincmd j<CR>
-nmap <silent> <C-k> :wincmd k<CR>
-nmap <silent> <C-l> :wincmd l<CR>
-
-
-" Make other people absolutely hate me
-" Disable arrow keys
-inoremap <Left>  <NOP>
-inoremap <Right> <NOP>
-inoremap <Up>    <NOP>
-inoremap <Down>  <NOP>
-
+" keep more context when scrolling off the end of a buffer
+set scrolloff=5
 
 " Disable backups
 set nobackup
 set nowritebackup
 set noswapfile
 
-" Matching for trailing whitespace
-match Todo /\s\+$/
+" Hide stuffs
+set hidden
 
-""" Personal keybindings
-" Reload vim settings
-nmap <silent> <Leader>§ :source ~/.vimrc<CR>
-nmap <silent> <Leader>± :e ~/.vimrc<CR>
+" make tab completion for files/buffers act like bash
+set wildmenu
 
-" Close current split
-nmap <silent> <Leader>qq :q<CR>
+" show the `best match so far' as search strings are typed:
+set incsearch
+set ignorecase
+set smartcase
 
-" Map F1 to escape
-map <F1> <Esc>
-imap <F1> <Esc>
+" KEY BINDINGS
+let mapleader = ","
 
-" For fugitive
-nmap <silent> <Leader>gs :Gstatus<CR>
-nmap <silent> <Leader>gcc :Gcommit<CR>
+" RULERS
+set ruler
 
-" For ruby method navigation
-map <Leader>[ [m
-map <Leader>] ]M
-map <C-n> ]m
+
+""""""""""""""""""""""""""""""""""""""""
+" Shell Settings
+""""""""""""""""""""""""""""""""""""""""
+set shell=/bin/sh
+
+""""""""""""""""""""""""""""""""""""""""
+" KEY BINDINGS
+""""""""""""""""""""""""""""""""""""""""
+
+" Move around splits with <c-hjkl>
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
+" Insert a hash rocket with <c-l>
+imap <c-l> <space>=><space>
 
 " For command-t
 map <Leader>ft :CommandTFlush<CR>
 
-" For email
-augroup filetypedetect
-  " Mail
-  autocmd BufRead,BufNewFile *mutt-* setfiletype mail
-augroup END
+"""""""""""""""""""""""""""""""""""""""
+" ARDUINO
+"""""""""""""""""""""""""""""""""""""""
+au BufNewFile,BufRead *.pde setf arduino *
+au BufNewFile,BufRead *.ino setf arduino *
+au BufNewFile,BufReadPost *.pde set filetype=arduino
+au BufNewFile,BufReadPost *.ino set filetype=arduino
 
-" For Rubytest
+map <silent> <LocalLeader>am :!make<CR>
+map <silent> <LocalLeader>ac :!make clean<CR>
+map <silent> <LocalLeader>au :!make upload<CR>
+map <silent> <LocalLeader>aa :!make && make upload<CR>
 
-let g:rubytest_in_quickfix = 1
-let g:rubytest_cmd_test = "ruby %p"
-let g:rubytest_cmd_testcase = "ruby %p -n '/%c/'"
-let g:rubytest_cmd_spec = "bundle exec spec -f specdoc %p"
-let g:rubytest_cmd_example = "bundle exec spec -f specdoc %p -e '%c'"
-let g:rubytest_cmd_feature = "bundle exec cucumber %p"
-let g:rubytest_cmd_story = "bundle exec cucumber %p -n '%c'"
+"""""""""""""""""""""""""""""""""""""""
+" RUBY
+"""""""""""""""""""""""""""""""""""""""
 
-map <Leader>r <Plug>RubyTestRun " change from <Leader>t to <Leader>r
-map <Leader>R <Plug>RubyFileRun " change from <Leader>T to <Leader>R
-map <Leader>\ <Plug>RubyTestRunLast " change from <Leader>l to <Leader>\
+" Highlight ruby operators
+let ruby_operators = 1
 
-" Hide stuffs
-set hidden
+" Turn off rails bits of statusbar
+" let g:rails_statusline=0
 
-" For scratch buffer
-map <Leader>` :ScratchOpen<CR>
+" Close taglist window if last file is closed
+" let Tlist_Exit_OnlyWindow=1
+
+""""""""""""""""""""""""""""""""""""""""""""
+" AUTOCOMMANDS
+""""""""""""""""""""""""""""""""""""""""""""
+
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+
+" kill trailing spaces when exiting file
+fun! StripTrailingWhitespace()
+    " Don't strip on these filetypes
+    if &ft =~ 'markdown'
+        return
+    endif
+    %s/\s\+$//e
+endfun
+
+autocmd BufWritePre * call StripTrailingWhitespace()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" OPEN FILES IN DIRECTORY OF CURRENT FILE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>e :edit %%
+map <leader>v :view %%
 
 " For easy buffer toggling
 map <Leader>, :b#<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CoffeeScript
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Configure Coffeescript folds
+au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PROMOTE VARIABLE TO RSPEC LET
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"function! PromoteToLet()
+  ":normal! dd
+  ":exec '?^\s*it\>'
+  ":normal! P
+  ":.s/\(\w\+\) = \(.*\)$/let(:\1) { \2 }/
+  ":normal ==
+"endfunction
+":command! PromoteToLet :call PromoteToLet()
+":map <leader>p :PromoteToLet<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SWITCH BETWEEN TEST AND PRODUCTION CODE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! OpenTestAlternate()
+  let new_file = AlternateForCurrentFile()
+  exec ':e ' . new_file
+endfunction
+
+function! AlternateForCurrentFile()
+  let current_file = expand("%")
+  let new_file = current_file
+  let in_spec = match(current_file, '^spec/') != -1
+  let going_to_spec = !in_spec
+  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1
+  if going_to_spec
+    if in_app
+      let new_file = substitute(new_file, '^app/', '', '')
+    end
+    let new_file = substitute(new_file, '\.rb$', '_spec.rb', '')
+    let new_file = 'spec/' . new_file
+  else
+    let new_file = substitute(new_file, '_spec\.rb$', '.rb', '')
+    let new_file = substitute(new_file, '^spec/', '', '')
+    if in_app
+      let new_file = 'app/' . new_file
+    end
+  endif
+  return new_file
+endfunction
+nnoremap <leader>. :call OpenTestAlternate()<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" RUNNING TESTS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! RunTests(filename)
+    " Write the file and run tests for the given filename
+    :w
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    if match(a:filename, '\.feature$') != -1
+        exec ":!script/features " . a:filename
+    else
+        if filereadable("script/test")
+            exec ":!script/test " . a:filename
+        elseif filereadable("Gemfile")
+            exec ":!bundle exec rspec --no-color " . a:filename
+        else
+            exec ":!rspec --color " . a:filename
+        end
+    end
+endfunction
+
+function! SetTestFile()
+    " Set the spec file that tests will be run for.
+    let t:grb_test_file=@%
+endfunction
+
+function! RunTestFile(...)
+    if a:0
+        let command_suffix = a:1
+    else
+        let command_suffix = ""
+    endif
+
+    " Run the tests for the previously-marked file.
+    let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
+    if in_test_file
+        call SetTestFile()
+    elseif !exists("t:grb_test_file")
+        return
+    end
+    call RunTests(t:grb_test_file . command_suffix)
+endfunction
+
+function! RunNearestTest()
+    let spec_line_number = line('.')
+    call RunTestFile(":" . spec_line_number . " -b")
+endfunction
+
+map <leader>q :call RunTestFile()<cr>
+map <leader>T :call RunNearestTest()<cr>
+map <leader>a :call RunTests('')<cr>
+"map <leader>c :w\|:!script/features<cr>
+"map <leader>w :w\|:!script/features --profile wip<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MULTIPURPOSE TAB KEY
+" Indent if we're at the beginning of a line. Else, do completion.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree Helpers
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <C-n> :NERDTreeToggle<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ON THE GO MAPPINGS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Open ducment in Marked
+:nnoremap <leader>m :silent !open -a Marked.app '%:p'<cr>
+
+"Some help with optimizing .vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>ev :edit $MYVIMRC<cr>
+
+"" Stop hitting that escape button all the time
+inoremap <c-cr> <esc>
+
+iabbrev questoinnaire questionnaire
+iabbrev Questoinnaire Questionnaire
+iabbrev parswer parser
+iabbrev Parswer parser
+iabbrev Opener OpeNER
+iabbrev kaf KAF
+iabbrev connectoin connection

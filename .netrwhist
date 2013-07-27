@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/wilco/Sites/paboweb'
+let g:netrw_dirhist_2='/Users/wilco/Development/Christina/sna'
+let g:netrw_dirhist_3='/Users/wilco/Sites/sentiment'
+let g:netrw_dirhist_4='/Users/wilco/Sites/contextvoice_collector'
+let g:netrw_dirhist_5='/Users/wilco/Sites/oat'
+let g:netrw_dirhist_6='/Users/wilco/Development/vimfiles/bundle'
+let g:netrw_dirhist_7='/Users/wilco/Development/vimfiles/bundle/vim-rails'
