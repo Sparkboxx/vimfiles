@@ -8,7 +8,7 @@ by me on a daily basis in my favorite Vim version: MacVim.
 1. From your terminal:
 <pre>
 cd ~
-git clone git://github.com/bulters/vimfiles.git
+git clone git://github.com/sparkboxx/vimfiles.git
 ln -s vimfiles ~/.vim
 ln -s vimfiles/vimrc ~/.vimrc
 </pre>
@@ -34,8 +34,5 @@ cd ~/vimfiles/bundle/command-t && rake make && cd
 
 In no particular order:
 
-* Vundle: To install plugins/filetypes/color themes with great ease.
-* Molokai: The most amazing colortheme for code editing.
 * Fugitive/Git: Git VC right from Vim.
-* VimClojure: Yeah, I should be using Emacs for this; but can't get my head/fingers around the keybindings.
 

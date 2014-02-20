@@ -1,10 +1,9 @@
-set nocp
-call pathogen#infect()
+set nocompatible
+call pathogen#infect('~/.vim/bundle')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC EDITING CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible
 " Enable filetype-specific indenting, syntax, and plugins
 filetype plugin indent on
 
@@ -149,7 +148,7 @@ autocmd BufWritePre * call StripTrailingWhitespace()
 " OPEN FILES IN DIRECTORY OF CURRENT FILE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>e :edit %%
+map <leader>e :edit %%<CR>
 map <leader>v :view %%
 
 " For easy buffer toggling
@@ -298,10 +297,18 @@ nnoremap <leader>ev :edit $MYVIMRC<cr>
 "" Stop hitting that escape button all the time
 inoremap <c-cr> <esc>
 
+"" Configure Vim Gist by our friend Mats
+let g:gist_post_private = 1
+let g:gist_show_privates = 1
+let g:gist_open_browser_after_post = 1
+let g:gist_detect_filetype = 1
+let g:gist_clip_command = 'pbcopy'
+
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gc :Gcommit<cr>
+
 iabbrev questoinnaire questionnaire
 iabbrev Questoinnaire Questionnaire
 iabbrev parswer parser
 iabbrev Parswer parser
-iabbrev Opener OpeNER
-iabbrev kaf KAF
 iabbrev connectoin connection

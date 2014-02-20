@@ -11,14 +11,20 @@ snippet cr Insterts a code review comment
 	#
 	# ${1:Please write your comment.}
 	#
-
 snippet bb Insterst a Key Value block
 	{ |${1:var}, ${2:var}| ${3} }
-
 snippet doc Inserts a Documentation block
 	##
 	# ${1:Summary}
 	# @param [${2:input_param}] ${3:description}
 	# @return [${4:output}]
 	#
+snippet context Inserts a context in a spec
+	context "${1:description}" do
+	  it "${2:should_do_something}" do
+		${3}
+	  end
+	end
 
+snippet let Inserts a let block
+	let(:${1:shortcut}) {${2:object}}
