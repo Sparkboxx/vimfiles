@@ -1,69 +1,69 @@
 [submodule "bundle/ack.vim"]
 	path = bundle/ack.vim
-	url = https://github.com/vim-scripts/ack.vim.git
+	url = git@github.com:mileszs/ack.vim.git
 [submodule "bundle/command-t"]
 	path = bundle/command-t
-	url = https://github.com/vim-scripts/ack.vim.git
+	url = git@github.com:wincent/Command-T.git
 [submodule "bundle/dash.vim"]
 	path = bundle/dash.vim
 	url = https://github.com/vim-scripts/ack.vim.git
 [submodule "bundle/editorconfig-vim"]
 	path = bundle/editorconfig-vim
-	url = https://github.com/vim-scripts/ack.vim.git
+	url = git@github.com:editorconfig/editorconfig-vim.git
 [submodule "bundle/funcoo.vim"]
 	path = bundle/funcoo.vim
 	url = https://github.com/vim-scripts/ack.vim.git
 [submodule "bundle/gist-vim"]
 	path = bundle/gist-vim
-	url = https://github.com/vim-scripts/ack.vim.git
+	url = git@github.com:mattn/gist-vim.git
 [submodule "bundle/jellybeans.vim"]
 	path = bundle/jellybeans.vim
-	url = https://github.com/vim-scripts/ack.vim.git
+	url = git@github.com:nanotech/jellybeans.vim.git
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
-	url = https://github.com/vim-scripts/ack.vim.git
+	url = git@github.com:scrooloose/nerdcommenter.git
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
-	url = https://github.com/vim-scripts/ack.vim.git
+	url = git@github.com:scrooloose/nerdtree.git
 [submodule "bundle/tabular"]
 	path = bundle/tabular
-	url = https://github.com/vim-scripts/ack.vim.git
+	url = git@github.com:godlygeek/tabular.git
 [submodule "bundle/vim-addon-mw-utils"]
 	path = bundle/vim-addon-mw-utils
-	url = https://github.com/vim-scripts/ack.vim.git
+	url = git@github.com:MarcWeber/vim-addon-mw-utils.git
 [submodule "bundle/vim-arduino"]
 	path = bundle/vim-arduino
 	url = https://github.com/vim-scripts/ack.vim.git
 [submodule "bundle/vim-bundler"]
 	path = bundle/vim-bundler
-	url = https://github.com/vim-scripts/ack.vim.git
+	url = git@github.com:tpope/vim-bundler.git
 [submodule "bundle/vim-coffee-script"]
 	path = bundle/vim-coffee-script
-	url = https://github.com/vim-scripts/ack.vim.git
+	url = git@github.com:kchmck/vim-coffee-script.git
 [submodule "bundle/vim-colors-solarized"]
 	path = bundle/vim-colors-solarized
 	url = https://github.com/vim-scripts/ack.vim.git
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
-	url = https://github.com/vim-scripts/ack.vim.git
+	url = git@github.com:tpope/vim-fugitive.git
 [submodule "bundle/vim-rails"]
 	path = bundle/vim-rails
-	url = https://github.com/vim-scripts/ack.vim.git
+	url = git@github.com:tpope/vim-rails.git
 [submodule "bundle/vim-rspec"]
 	path = bundle/vim-rspec
-	url = https://github.com/vim-scripts/ack.vim.git
+	url = git@github.com:thoughtbot/vim-rspec.git
 [submodule "bundle/vim-snipmate"]
 	path = bundle/vim-snipmate
-	url = https://github.com/vim-scripts/ack.vim.git
+	url = git@github.com:garbas/vim-snipmate.git
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
-	url = https://github.com/vim-scripts/ack.vim.git
+	url = git@github.com:tpope/vim-surround.git
 [submodule "bundle/vim-tlib"]
 	path = bundle/vim-tlib
-	url = https://github.com/vim-scripts/ack.vim.git
+	url = git@github.com:vim-scripts/tlib.git
 [submodule "bundle/vundle"]
 	path = bundle/vundle
 	url = https://github.com/vim-scripts/ack.vim.git
 [submodule "bundle/webapi-vim"]
 	path = bundle/webapi-vim
-	url = https://github.com/vim-scripts/ack.vim.git
+	url = git@github.com:mattn/webapi-vim.git
