@@ -64,7 +64,7 @@ set noswapfile
 set hidden
 
 " make tab completion for files/buffers act like bash
-set wildmenu
+"set wildmenu
 
 " show the `best match so far' as search strings are typed:
 set incsearch
@@ -153,6 +153,12 @@ map <leader>v :view %%
 
 " For easy buffer toggling
 map <Leader>, :b#<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ctrl P
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:ctrlp_map = '<Leader>t'
+"let g:ctrlp_cmd = 'CtrlP
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CoffeeScript
@@ -262,22 +268,6 @@ map <leader>T :call RunNearestTest()<cr>
 map <leader>a :call RunTests('')<cr>
 "map <leader>c :w\|:!script/features<cr>
 "map <leader>w :w\|:!script/features --profile wip<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MULTIPURPOSE TAB KEY
-" Indent if we're at the beginning of a line. Else, do completion.
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-n>
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree Helpers
