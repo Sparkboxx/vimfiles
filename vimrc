@@ -93,11 +93,10 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
+nnoremap ; :
+
 " Insert a hash rocket with <c-l>
 imap <c-l> <space>=><space>
-
-" For command-t
-map <Leader>ft :CommandTFlush<CR>
 
 """""""""""""""""""""""""""""""""""""""
 " ARDUINO
@@ -111,6 +110,11 @@ map <silent> <LocalLeader>am :!make<CR>
 map <silent> <LocalLeader>ac :!make clean<CR>
 map <silent> <LocalLeader>au :!make upload<CR>
 map <silent> <LocalLeader>aa :!make && make upload<CR>
+
+"""""""""""""""""""""""""""""""""""""""
+" MARKDOWN
+"""""""""""""""""""""""""""""""""""""""
+au BufNewFile,BufReadPost *.md set filetype=markdown
 
 """""""""""""""""""""""""""""""""""""""
 " RUBY
@@ -297,8 +301,17 @@ let g:gist_clip_command = 'pbcopy'
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gc :Gcommit<cr>
 
-iabbrev questoinnaire questionnaire
-iabbrev Questoinnaire Questionnaire
-iabbrev parswer parser
-iabbrev Parswer parser
-iabbrev connectoin connection
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" UltiSnips
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsSnippetDirectories=["ultisnippets"]
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+nnoremap <leader>es :edit ~/.vim/ultisnippets/ruby.snippets<cr>
