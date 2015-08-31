@@ -9,26 +9,26 @@ by me on a daily basis in my favorite Vim version: MacVim.
 <pre>
 cd ~
 git clone git://github.com/sparkboxx/vimfiles.git
-ln -s vimfiles ~/.vim
-ln -s vimfiles/vimrc ~/.vimrc
+ln -s ~/path/to/vimfiles ~/.vim
+ln -s ~/path/to/vimfiles/vimrc ~/.vimrc
+
+cd ~/.vim
+git submodule init
+git submodule update
 </pre>
 
-2. From vim
-<pre>
-:e ~/.vimrc
-:BundleInstall
-</pre>
+2. Install ACK
 
-3. You're al... no not quite yet.
+Make sure Ack is installed on your computer for the Ack plugin to work. 
+On a mac a simple 
 
-*Command-T* will require compilation to do some textmate like quick go-to-file magic.
-So to compile the .....:
+    brew install ack
 
-<pre>
-cd ~/vimfiles/bundle/command-t && rake make && cd
-</pre>
+Probably does the trick.
 
-4. You're all set!
+
+3. You're all set
+
 
 ## What in there?
 
