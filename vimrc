@@ -25,7 +25,7 @@ if has('gui_running')
     set guioptions-=R        " no right scrollbar
 endif
 
-set guifont=Menlo:h14
+set guifont=Menlo:h13
 
 " TEXT SETTINGS
 " Disable line wrapping
@@ -281,7 +281,7 @@ map <C-n> :NERDTreeToggle<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ON THE GO MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Open ducment in Marked
+" Open document in Marked
 :nnoremap <leader>m :silent !open -a Marked.app '%:p'<cr>
 
 "Some help with optimizing .vimrc
@@ -298,20 +298,6 @@ let g:gist_open_browser_after_post = 1
 let g:gist_detect_filetype = 1
 let g:gist_clip_command = 'pbcopy'
 
+"" Some git commands
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gc :Gcommit<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" UltiSnips
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-l>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-let g:UltiSnipsSnippetDirectories=["ultisnippets"]
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
-nnoremap <leader>es :edit ~/.vim/ultisnippets/ruby.snippets<cr>
